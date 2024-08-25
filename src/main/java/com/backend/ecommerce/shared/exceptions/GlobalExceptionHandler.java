@@ -13,5 +13,11 @@ public class GlobalExceptionHandler {
         System.out.println("Exception handler is working");
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(UniquenessException.class)
+    public ResponseEntity<String> handleUniquenessException(UniquenessException ex){
+        System.out.println("Handling UniquenessException");
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+    }
 }
 

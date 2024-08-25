@@ -9,7 +9,8 @@ import java.util.UUID;
 public interface UserRepository {
     public List<User> getAllUsers();
     public Optional<User> getUserById(UUID id);
-//    public boolean createUser(User user);
+    public Optional<User> getUserByEmail(String email);
+    public User save(User user);
 //    public boolean updateUser(User user);
 //    public boolean deleteUser(int id);
 }

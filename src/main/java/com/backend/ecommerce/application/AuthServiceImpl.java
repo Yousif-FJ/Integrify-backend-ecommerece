@@ -53,14 +53,8 @@ public class AuthServiceImpl {
     }
 
     public String authenticate(@RequestBody LoginDto user){
-        try {
         Authentication auth = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.email(), user.password()));
-        }
-        catch (AuthenticationException e) {
-            return "Invalid Login Credentials";
-        }
-
 
         User userOptional = userRepo.getUserByEmail(user.email())
                 .orElseThrow(() -> new UsernameNotFoundException("No user found"));

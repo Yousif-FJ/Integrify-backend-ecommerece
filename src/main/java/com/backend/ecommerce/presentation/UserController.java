@@ -7,6 +7,7 @@ import com.backend.ecommerce.application.dto.user.LoginDto;
 import com.backend.ecommerce.application.dto.user.RegisterDto;
 import com.backend.ecommerce.domain.entities.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,7 +43,12 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginDto loginDto){
-        return authService.authenticate(loginDto);
+    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
+        try{
+            return ResponseEntity.ok(authService.authenticate(loginDto));
+        }
+        catch (AuthenticationException e) {
+            return ResponseEntity.badRequest().body("Invalid username or password");
+        }
     }
 }

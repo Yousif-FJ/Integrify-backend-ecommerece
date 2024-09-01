@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ProductService {
-    public List<ProductDto> getAllProducts();
+    public List<ProductDto> getAllProducts(Optional<String> searchValue);
     public Optional<ProductDto> getProductById(UUID id);
     public ProductDto addProduct(CreateProductDto product);
     public ProductDto updateProduct(UpdateProductDto product);

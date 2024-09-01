@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public interface ProductRepository {
     public List<Product> getAllProducts();
+    public List<Product> searchProducts(String keyword);
     public Optional<Product> getProductById(UUID id);
     public Product addProduct(Product product);
     public Product updateProduct(Product product);

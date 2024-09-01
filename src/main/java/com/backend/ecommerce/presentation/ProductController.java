@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -23,8 +24,8 @@ public class ProductController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<ProductDto>> getProduct(){
-        var products = productService.getAllProducts();
+    public ResponseEntity<List<ProductDto>> getProduct(Optional<String> searchValue){
+        var products = productService.getAllProducts(searchValue);
 
         return ResponseEntity.ok(products);
     }

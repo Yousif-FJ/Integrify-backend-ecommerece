@@ -5,6 +5,7 @@ import com.backend.ecommerce.application.dto.product.CreateProductDto;
 import com.backend.ecommerce.application.dto.product.ProductDto;
 import com.backend.ecommerce.application.dto.product.UpdateProductDto;
 import com.backend.ecommerce.application.mapper.ProductMapper;
+import com.backend.ecommerce.domain.entities.Product;
 import com.backend.ecommerce.domain.interfaces.CategoryRepository;
 import com.backend.ecommerce.domain.interfaces.ProductRepository;
 import com.backend.ecommerce.shared.exceptions.BadRequestException;
@@ -28,8 +29,13 @@ public class ProductServiceImpl implements ProductService {
         this.productMapper = productMapper;
     }
 
-    public List<ProductDto> getAllProducts() {
-        var products = productRepository.getAllProducts();
+    public List<ProductDto> getAllProducts(Optional<String> searchValue) {
+        List<Product> products;
+        if (searchValue.isPresent()) {
+            products = productRepository.searchProducts(searchValue.get());
+        } else {
+            products = productRepository.getAllProducts();
+        }
 
         return productMapper.toProductListDto(products);
     }

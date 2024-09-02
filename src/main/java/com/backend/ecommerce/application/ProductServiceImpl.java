@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 
     public List<ProductDto> getAllProducts(Optional<String> searchValue) {
         List<Product> products;
-        if (searchValue.isPresent()) {
+        if (searchValue.isPresent() && !searchValue.get().isEmpty()) {
             products = productRepository.searchProducts(searchValue.get());
         } else {
             products = productRepository.getAllProducts();

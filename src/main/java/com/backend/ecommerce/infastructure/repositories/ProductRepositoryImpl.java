@@ -25,7 +25,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> searchProducts(String keyword) {
-        return jpaProductRepository.findByNameContaining(keyword);
+        return jpaProductRepository.findByNameContainingIgnoreCase(keyword);
     }
 
     @Override

@@ -47,7 +47,7 @@ public class AuthServiceImpl {
 
         var passwordEncoded = passwordEncoder.encode(registeredUser.password());
         User user = new User(registeredUser.name(), registeredUser.email(), passwordEncoded,
-                UserRole.USER);
+                UserRole.user);
 
         userRepo.save(user);
 

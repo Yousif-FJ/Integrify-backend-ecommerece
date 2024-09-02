@@ -3,6 +3,7 @@ package com.backend.ecommerce.presentation;
 
 import com.backend.ecommerce.application.AuthServiceImpl;
 import com.backend.ecommerce.application.UserDetailsServiceImpl;
+import com.backend.ecommerce.application.dto.user.AuthResultDto;
 import com.backend.ecommerce.application.dto.user.LoginDto;
 import com.backend.ecommerce.application.dto.user.RegisterDto;
 import com.backend.ecommerce.domain.entities.User;
@@ -38,17 +39,17 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody RegisterDto registerDto){
-        return authService.register(registerDto);
+    public ResponseEntity<AuthResultDto> register(@RequestBody RegisterDto registerDto){
+        return ResponseEntity.ok(authService.register(registerDto));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto){
+    public ResponseEntity<AuthResultDto> login(@RequestBody LoginDto loginDto){
         try{
             return ResponseEntity.ok(authService.authenticate(loginDto));
         }
         catch (AuthenticationException e) {
-            return ResponseEntity.badRequest().body("Invalid username or password");
+            return ResponseEntity.badRequest().build();
         }
     }
 }

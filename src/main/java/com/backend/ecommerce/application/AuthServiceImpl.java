@@ -1,7 +1,9 @@
 package com.backend.ecommerce.application;
 
+import com.backend.ecommerce.application.dto.user.AuthResultDto;
 import com.backend.ecommerce.application.dto.user.LoginDto;
 import com.backend.ecommerce.application.dto.user.RegisterDto;
+import com.backend.ecommerce.application.dto.user.UserDto;
 import com.backend.ecommerce.domain.entities.User;
 import com.backend.ecommerce.domain.enums.UserRole;
 import com.backend.ecommerce.infastructure.repositories.UserRepositoryImpl;
@@ -36,7 +38,7 @@ public class AuthServiceImpl {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public String register(RegisterDto registeredUser){
+    public AuthResultDto register(RegisterDto registeredUser){
         // Check if the email already exists
         Optional<User> existingUser = userRepo.getUserByEmail(registeredUser.email());
         if (existingUser.isPresent()) {
@@ -49,17 +51,23 @@ public class AuthServiceImpl {
 
         userRepo.save(user);
 
-        return jwtUtil.generateToken(user);
+        var token = jwtUtil.generateToken(user);
+
+        return new AuthResultDto(token, new UserDto(user.getId(), user.getName(), user.getEmail(),
+                user.getUserRole()));
     }
 
-    public String authenticate(@RequestBody LoginDto user){
+    public AuthResultDto authenticate(@RequestBody LoginDto loginDto){
         Authentication auth = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(user.email(), user.password()));
+                .authenticate(new UsernamePasswordAuthenticationToken(loginDto.email(), loginDto.password()));
 
-        User userOptional = userRepo.getUserByEmail(user.email())
+        User user = userRepo.getUserByEmail(loginDto.email())
                 .orElseThrow(() -> new UsernameNotFoundException("No user found"));
 
-        return jwtUtil.generateToken(userOptional);
+        var token = jwtUtil.generateToken(user);
+
+        return new AuthResultDto(token, new UserDto(user.getId(), user.getName(), user.getEmail(),
+                user.getUserRole()));
     }
 
     public List<User> findAll(){

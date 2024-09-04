@@ -3,6 +3,7 @@ package com.backend.ecommerce.application;
 import com.backend.ecommerce.application.dto.user.UserDto;
 import com.backend.ecommerce.domain.entities.User;
 import com.backend.ecommerce.domain.interfaces.UserRepository;
+import com.backend.ecommerce.shared.exceptions.BadRequestException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,5 +37,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         var result = userRepository.getUserByEmail(username);
 
         return result.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
+    public UserDto updateUser(UserDto userDto) {
+
+        var oldUser = userRepository.getUserById(userDto.id());
+
+        if (oldUser.isEmpty()){
+            throw new BadRequestException("User not found");
+        }
+
+        var updatedUser = new User(userDto.name(), userDto.email(), oldUser.get().getPassword(),
+                userDto.role());
+
+        userRepository.save(updatedUser);
+
+        return userDto;
     }
 }

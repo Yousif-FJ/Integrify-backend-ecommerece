@@ -3,6 +3,8 @@ package com.backend.ecommerce.presentation;
 
 import com.backend.ecommerce.application.AuthServiceImpl;
 import com.backend.ecommerce.application.UserDetailsServiceImpl;
+import com.backend.ecommerce.application.dto.product.ProductDto;
+import com.backend.ecommerce.application.dto.product.UpdateProductDto;
 import com.backend.ecommerce.application.dto.user.AuthResultDto;
 import com.backend.ecommerce.application.dto.user.LoginDto;
 import com.backend.ecommerce.application.dto.user.RegisterDto;
@@ -37,6 +39,13 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable("id") UUID id){
         var user = userDetailsServiceImpl.getUserById(id);
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PutMapping()
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto){
+        var result = userDetailsServiceImpl.updateUser(userDto);
+
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/register")

@@ -48,6 +48,12 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable UUID id){
+        userDetailsServiceImpl.removeUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping("/register")
     public ResponseEntity<AuthResultDto> register(@RequestBody RegisterDto registerDto){
         return ResponseEntity.ok(authService.register(registerDto));

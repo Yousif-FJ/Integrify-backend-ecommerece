@@ -38,28 +38,12 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User save(User user) {
+    public void save(User user) {
         jpaUserRepository.save(user);
-        return user;
     }
-//
-//    @Override
-//    public boolean updateUser(User user) {
-//        try {
-//            this.users.set(this.users.indexOf(user), user);
-//            return true;
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
-//
-//    @Override
-//    public boolean deleteUser(int id) {
-//        try {
-//            this.users.removeIf(user -> user.getId() == id);
-//            return true;
-//        } catch (Exception e) {
-//            return false;
-//        }
-//    }
+
+    @Override
+    public void delete(User user) {
+        jpaUserRepository.delete(user);
+    }
 }

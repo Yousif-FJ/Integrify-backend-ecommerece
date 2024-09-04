@@ -1,0 +1,15 @@
+meta {
+  name: delete user
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:8080/api/users/6d02b892-9b60-45d8-a359-4c1a15308f2d
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiJlY2FhNjM4YS0xYmU4LTQ1YzMtYTljNS0zMmUxZTBmNDE0ZDEiLCJpYXQiOjE3MjU0NTMyNzEsImV4cCI6MTcyNTUzOTY3MX0.lqrd0m4umyq4EjQACRxgR2FIROIFjAraLRxJkHeJ2U4bhZafYsJQQlHavYaez2Su
+}

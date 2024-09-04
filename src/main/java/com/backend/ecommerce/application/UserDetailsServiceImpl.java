@@ -54,4 +54,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         return userDto;
     }
+
+    public void removeUser(UUID id) {
+        var user = userRepository.getUserById(id);
+        user.ifPresent(userRepository::delete);
+    }
 }

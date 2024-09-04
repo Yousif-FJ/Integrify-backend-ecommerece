@@ -10,7 +10,8 @@ public interface UserRepository {
     public List<User> getAllUsers();
     public Optional<User> getUserById(UUID id);
     public Optional<User> getUserByEmail(String email);
-    public User save(User user);
+    public void save(User user);
+    public void delete(User user);
 //    public boolean updateUser(User user);
 //    public boolean deleteUser(int id);
 }

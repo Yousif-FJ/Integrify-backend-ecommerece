@@ -1,0 +1,15 @@
+meta {
+  name: search products
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:8080/api/products?searchValue=family
+  body: none
+  auth: none
+}
+
+params:query {
+  searchValue: family
+}

@@ -1,0 +1,18 @@
+meta {
+  name: create product
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/products
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name":"new shirt 2",
+    "categoryId": "de8a2af1-86b3-4471-a1dd-e52ab8d21f9c"
+  }
+}

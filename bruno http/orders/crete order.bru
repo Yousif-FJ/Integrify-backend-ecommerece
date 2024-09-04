@@ -1,0 +1,28 @@
+meta {
+  name: crete order
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/orders
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": "906ba0d1-f40b-4494-8679-885cc46beedb",
+    "shipmentCity":"Tampere",
+    "products":[
+      {
+        "productId": "e2e4c4e5-f029-4950-805e-694df1ea931e",
+        "quantity": 1
+      },
+      {
+        "productId":"0cd684a4-60e9-4bd1-874e-00b22ff7e7c7",
+        "quantity": 1
+      }
+    ]
+  }
+}

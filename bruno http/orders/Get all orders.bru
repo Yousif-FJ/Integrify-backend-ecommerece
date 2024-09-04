@@ -1,0 +1,15 @@
+meta {
+  name: Get all orders
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/api/orders
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyIiwidXNlcl9pZCI6IjA0MGY4YjdmLWY0ZGYtNDI0YS05ZjQ5LWU3YTIwNjAzZDJmMSIsImlhdCI6MTcyNDA2MjQ3NiwiZXhwIjoxNzI0MTQ4ODc2fQ.wR-uqMWRS93XR2Cya6TtPu1rT_SoQu0oK_46atN6mcK6rYz2ahHdnrzjU30hduKL
+}

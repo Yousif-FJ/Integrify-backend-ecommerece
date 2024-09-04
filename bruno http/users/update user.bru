@@ -1,0 +1,24 @@
+meta {
+  name: update user
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/api/users
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiJlY2FhNjM4YS0xYmU4LTQ1YzMtYTljNS0zMmUxZTBmNDE0ZDEiLCJpYXQiOjE3MjU0NTMyNzEsImV4cCI6MTcyNTUzOTY3MX0.lqrd0m4umyq4EjQACRxgR2FIROIFjAraLRxJkHeJ2U4bhZafYsJQQlHavYaez2Su
+}
+
+body:json {
+    {
+      "id": "3ee45909-0f66-4b32-bafc-b7683fb8e803",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "role": "admin"
+    }
+}

@@ -6,6 +6,7 @@ import com.backend.ecommerce.application.UserDetailsServiceImpl;
 import com.backend.ecommerce.application.dto.user.AuthResultDto;
 import com.backend.ecommerce.application.dto.user.LoginDto;
 import com.backend.ecommerce.application.dto.user.RegisterDto;
+import com.backend.ecommerce.application.dto.user.UserDto;
 import com.backend.ecommerce.domain.entities.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<User>> getAllUsers(){
+    public ResponseEntity<List<UserDto>> getAllUsers(){
         var users = userDetailsServiceImpl.getAllUsers();
         return ResponseEntity.ok(users);
     }

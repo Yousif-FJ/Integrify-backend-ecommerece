@@ -1,5 +1,6 @@
 package com.backend.ecommerce.application;
 
+import com.backend.ecommerce.application.dto.user.UserDto;
 import com.backend.ecommerce.domain.entities.User;
 import com.backend.ecommerce.domain.interfaces.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,8 +21,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.getAllUsers();
+    public List<UserDto> getAllUsers() {
+        return userRepository.getAllUsers().stream()
+                .map(u -> new UserDto(u.getId(), u.getName(), u.getEmail(), u.getUserRole()))
+                .toList();
     }
 
     public Optional<User> getUserById(UUID id) {

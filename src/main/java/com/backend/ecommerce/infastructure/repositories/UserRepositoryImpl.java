@@ -5,6 +5,7 @@ import com.backend.ecommerce.domain.interfaces.UserRepository;
 import com.backend.ecommerce.infastructure.jpaRepositories.JpaUserRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
@@ -20,7 +21,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAllUsers() {
-        return jpaUserRepository.findAll().stream().toList();
+        return jpaUserRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(User::getName))
+                .toList();
     }
 
     @Override

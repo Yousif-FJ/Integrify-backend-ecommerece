@@ -47,7 +47,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new BadRequestException("User not found");
         }
 
-        var updatedUser = new User(userDto.name(), userDto.email(), oldUser.get().getPassword(),
+        var updatedUser = new User(userDto.id(), userDto.name(), userDto.email(), oldUser.get().getPassword(),
                 userDto.role());
 
         userRepository.save(updatedUser);

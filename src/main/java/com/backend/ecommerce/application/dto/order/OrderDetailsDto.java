@@ -18,7 +18,7 @@ public record OrderDetailsDto(
   String shipmentCity,
   String shipmentStreet,
   String shipmentPostNumber,
-  LocalDateTime orderDate,
+  LocalDate orderDate,
   float amount,
   String billingCity,
   String billingStreet,

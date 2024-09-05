@@ -35,6 +35,13 @@ public class OrderController {
     }
   }
 
+  //For testing purposes
+  @GetMapping("exception")
+  public ResponseEntity<String> exception(Authentication authentication) {
+    var user = ((User)authentication.getPrincipal());
+    throw new RuntimeException("Something went wrong user was " + user.getUsername());
+  }
+
   @GetMapping("/{id}")
   public ResponseEntity<Optional<OrderDetailsDto>> findOne(@PathVariable UUID id,
                                                            Authentication authentication) {

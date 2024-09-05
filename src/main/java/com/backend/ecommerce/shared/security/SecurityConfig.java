@@ -38,8 +38,6 @@ public class SecurityConfig {
                                         "/api/users/register",
                                         "/api/users/login",
                                         "/api/products/*",
-                                        "/api/orders",
-                                        "/api/orders/*",
                                         "/api/products")
                                 .permitAll()
                                 .requestMatchers("/api/users").hasAnyAuthority("admin")

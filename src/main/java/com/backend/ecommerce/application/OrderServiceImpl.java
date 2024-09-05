@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -104,7 +105,7 @@ public class OrderServiceImpl implements OrderService {
     public Optional<OrderDetailsDto> createNewOrder(CreateOrderDto createOrderDto, User user) {
         Order order = orderMapper.toOrderFromCreateOrderDto(createOrderDto);
         order.setUser(user);
-        order.setDate(LocalDateTime.now());
+        order.setDate(LocalDate.now());
 
         Order newOrder = jpaOrderRepository.save(order);
 

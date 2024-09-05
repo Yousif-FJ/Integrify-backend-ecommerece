@@ -11,8 +11,5 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.FIELD)
 public interface OrderMapper {
   OrderDetailsDto toOrderDetailsDtoFromInterface(IOrderDetailsDto source);
-
-  @Mapping(target = "user.id", source = "source.user_id")
-  @Mapping(target = "orderProducts", source = "source.products")
   Order toOrderFromCreateOrderDto(CreateOrderDto source);
 }

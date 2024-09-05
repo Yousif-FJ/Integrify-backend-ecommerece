@@ -11,6 +11,7 @@ public interface ProductRepository {
     public List<Product> searchProducts(String keyword);
     public Optional<Product> getProductById(UUID id);
     public Product addProduct(Product product);
+    public List<Product> getProductsByIds(List<UUID> ids);
     public Product updateProduct(Product product);
     public void deleteProduct(UUID id);
 }

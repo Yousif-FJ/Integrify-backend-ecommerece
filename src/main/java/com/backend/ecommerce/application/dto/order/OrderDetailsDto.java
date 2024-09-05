@@ -2,6 +2,8 @@ package com.backend.ecommerce.application.dto.order;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -16,7 +18,7 @@ public record OrderDetailsDto(
   String shipmentCity,
   String shipmentStreet,
   String shipmentPostNumber,
-  Date orderDate,
+  LocalDateTime orderDate,
   float amount,
   String billingCity,
   String billingStreet,

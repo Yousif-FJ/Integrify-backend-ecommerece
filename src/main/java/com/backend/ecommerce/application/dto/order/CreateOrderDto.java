@@ -9,12 +9,9 @@ import java.util.UUID;
 
 
 public record CreateOrderDto (
-  UUID user_id,
   String city,
   String street,
   String postNumber,
   String status,
-  Date date,
-  List<CreateOrderProductDto> products,
-  UpdatePaymentDto payment
+  List<UUID> productsId
 ){}

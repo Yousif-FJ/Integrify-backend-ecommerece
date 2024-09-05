@@ -3,8 +3,6 @@ package com.backend.ecommerce.presentation;
 
 import com.backend.ecommerce.application.AuthServiceImpl;
 import com.backend.ecommerce.application.UserDetailsServiceImpl;
-import com.backend.ecommerce.application.dto.product.ProductDto;
-import com.backend.ecommerce.application.dto.product.UpdateProductDto;
 import com.backend.ecommerce.application.dto.user.AuthResultDto;
 import com.backend.ecommerce.application.dto.user.LoginDto;
 import com.backend.ecommerce.application.dto.user.RegisterDto;

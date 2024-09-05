@@ -1,6 +1,5 @@
 package com.backend.ecommerce.domain.entities;
 
-import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +11,17 @@ import java.util.UUID;
 @Setter
 @Table(name = "payment", schema = "ecommerce")
 public class Payment {
+
+  public Payment() {}
+
+  public Payment(float amount, String city, String street, String postNumber){
+    this.amount = amount;
+    this.city = city;
+    this.street = street;
+    this.postNumber = postNumber;
+    this.paymentStatus = false;
+  }
+
   @Id
   @Column(name="id")
   @GeneratedValue(strategy = GenerationType.UUID)
@@ -29,6 +39,6 @@ public class Payment {
   @Column(name = "post_number", columnDefinition="bpchar(5)")
   private String postNumber;
 
-  @Column(name = "paymentStatus")
+  @Column(name = "payment_Status")
   private boolean paymentStatus;
 }

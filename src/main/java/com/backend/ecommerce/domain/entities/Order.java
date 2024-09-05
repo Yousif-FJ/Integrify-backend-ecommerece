@@ -31,7 +31,7 @@ public class Order {
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
   private List<OrderProduct> orderProducts = new ArrayList<>();
 
-  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, optional = false)
+  @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, optional = true)
   @OnDelete(action = OnDeleteAction.CASCADE)
   @JoinColumn(name = "payment_id", referencedColumnName = "id")
   @JsonManagedReference

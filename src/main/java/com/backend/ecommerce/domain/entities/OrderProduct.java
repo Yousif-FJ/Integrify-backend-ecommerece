@@ -11,6 +11,15 @@ import java.util.UUID;
 @Setter
 @Table(name = "order_product", schema = "ecommerce")
 public class OrderProduct {
+
+  public OrderProduct() {}
+
+  public OrderProduct(Order order, Product product, double price) {
+    this.order = order;
+    this.product = product;
+    this.price = price;
+  }
+
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;

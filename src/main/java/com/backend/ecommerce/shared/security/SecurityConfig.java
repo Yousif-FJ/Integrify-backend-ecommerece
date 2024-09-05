@@ -35,11 +35,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         req -> req
                                 .requestMatchers(
-                                        "/api/users/register",
-                                        "/api/users/login",
-                                        "/api/products/*",
-                                        "/api/products")
+                                        "/api/users/register", "/api/users/login")
                                 .permitAll()
+
+                                .requestMatchers(HttpMethod.GET,"/api/products", "/api/products/*")
+                                .permitAll()
+
                                 .requestMatchers("/api/users").hasAnyAuthority("admin")
                                 .anyRequest()
                                 .authenticated()

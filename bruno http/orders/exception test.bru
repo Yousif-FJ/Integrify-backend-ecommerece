@@ -1,0 +1,15 @@
+meta {
+  name: exception test
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8080/api/orders/exception
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiJlY2FhNjM4YS0xYmU4LTQ1YzMtYTljNS0zMmUxZTBmNDE0ZDEiLCJpYXQiOjE3MjU1NDY1MzMsImV4cCI6MTcyNTYzMjkzM30.kcd9OORu-AB7faNAP6toWiIYvchyS0VyErPh7BTn0KZ1Hl1rK_t4kGg3jfcR1PlX
+}

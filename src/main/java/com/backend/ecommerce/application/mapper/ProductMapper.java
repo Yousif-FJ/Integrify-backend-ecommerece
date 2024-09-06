@@ -14,7 +14,6 @@ import java.util.List;
 public interface ProductMapper {
     List<ProductDto> toProductListDto(List<Product> products);
 
-    @Mapping(target = "category.id", source = "categoryId")
     Product toProduct(CreateProductDto source);
 
     @Mapping(target = "category.id", source = "categoryId")

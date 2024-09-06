@@ -7,12 +7,15 @@ meta {
 post {
   url: http://localhost:8080/api/products
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsInVzZXJfaWQiOiJlY2FhNjM4YS0xYmU4LTQ1YzMtYTljNS0zMmUxZTBmNDE0ZDEiLCJpYXQiOjE3MjU1NTMwNzIsImV4cCI6MTcyNTYzOTQ3Mn0.EYWtSMNPNyff69mYu6x8ct-fFYgWwk6wW4XtTVxB16G56Ijg8vQqNL_FqaemuMew
 }
 
 body:json {
   {
-    "name":"new shirt 2",
-    "categoryId": "de8a2af1-86b3-4471-a1dd-e52ab8d21f9c"
+    "name":"new shirt 2"
   }
 }

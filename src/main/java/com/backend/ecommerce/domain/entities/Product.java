@@ -23,7 +23,7 @@ public class Product {
     private double price;
     private int discount;
     private String description;
-    @ManyToOne
+    @ManyToOne(optional = true)
     private Category category;
     @JsonIgnore
     @OneToMany(mappedBy = "product")

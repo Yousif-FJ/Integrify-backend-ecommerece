@@ -49,10 +49,11 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto addProduct(CreateProductDto product) {
         var newProduct = productMapper.toProduct(product);
 
-        var category = categoryRepository.findById(product.categoryId());
-
-        if (category.isEmpty()){
-            throw new BadRequestException("Category not found");
+        if (product.categoryId() != null) {
+            var category = categoryRepository.findById(product.categoryId());
+            if (category.isEmpty()){
+                throw new BadRequestException("Category not found");
+            }
         }
 
         newProduct = productRepository.addProduct(newProduct);

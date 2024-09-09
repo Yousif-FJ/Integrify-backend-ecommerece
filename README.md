@@ -1,4 +1,13 @@
 # E-commerce Backend Project
+
+# Deployed version links
+Frontend: https://ecommerce-integrify.netlify.app/
+Backend: https://integrify-backend-ecommerece.onrender.com/api/
+
+Admin user:
+admin@example.com
+password
+
 ## Features
 
 ### Mandatory features

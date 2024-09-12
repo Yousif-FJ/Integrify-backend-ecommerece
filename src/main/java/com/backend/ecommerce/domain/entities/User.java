@@ -43,7 +43,7 @@ public class User implements UserDetails {
     @Column(name="password")
     private String password;
 
-    @Column(name = "type", columnDefinition = "enum('ADMIN', 'USER')")
+    @Column(name = "type")
     @Enumerated(EnumType.ORDINAL)
     private UserRole userRole;
 

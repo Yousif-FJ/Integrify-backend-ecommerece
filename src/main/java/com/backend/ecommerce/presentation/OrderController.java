@@ -39,7 +39,7 @@ public class OrderController {
   @GetMapping("exception")
   public ResponseEntity<String> exception(Authentication authentication) {
     var user = ((User)authentication.getPrincipal());
-    throw new RuntimeException("Something went wrong user was " + user.getUsername());
+    throw new NullPointerException("Something went wrong user was " + user.getUsername());
   }
 
   @GetMapping("/{id}")
